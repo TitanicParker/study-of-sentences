@@ -5,60 +5,176 @@
   <title>Study of Sentences</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
+    :root {
+      --radius: 8px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      max-width: 900px;
-      margin: 2rem auto;
-      padding: 0 1rem 3rem;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 1.5rem 1rem 3rem;
       line-height: 1.6;
+      background: #f7f7f9;
     }
+
     header {
       margin-bottom: 2.5rem;
-      border-bottom: 1px solid #ccc;
-      padding-bottom: 1rem;
+      padding: 1.75rem 1.25rem;
+      border-radius: var(--radius);
+      background: #ffffff;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
+      border: 1px solid #e1e1e6;
     }
-    h1 {
-      font-size: 2.4rem;
-      margin: 0 0 0.5rem;
+
+    .site-title {
+      margin: 0 0 0.25rem;
+      font-size: 2.3rem;
+      letter-spacing: 0.02em;
     }
-    h2 {
-      margin-top: 2rem;
-      font-size: 1.6rem;
+
+    .site-subtitle {
+      margin: 0 0 1rem;
+      font-size: 1rem;
+      opacity: 0.85;
     }
+
     nav {
-      margin-top: 0.5rem;
+      margin-top: 0.75rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
       font-size: 0.95rem;
     }
+
     nav a {
-      margin-right: 1rem;
+      text-decoration: none;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid #d4d4dd;
+      background: #fafafc;
+    }
+
+    nav a:hover {
+      background: #ececf3;
+    }
+
+    main {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    section {
+      background: #ffffff;
+      padding: 1.5rem 1.25rem;
+      border-radius: var(--radius);
+      border: 1px solid #e1e1e6;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+    }
+
+    h2 {
+      margin-top: 0;
+      font-size: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-lead {
+      margin-top: 0.25rem;
+      margin-bottom: 1rem;
+      font-size: 0.98rem;
+      opacity: 0.9;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      padding: 0;
+      list-style: none;
+      margin: 0;
+    }
+
+    .card {
+      border-radius: var(--radius);
+      border: 1px solid #e1e1e6;
+      padding: 1rem;
+      background: #fafafe;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .card h3 {
+      margin-top: 0;
+      margin-bottom: 0.4rem;
+      font-size: 1.1rem;
+    }
+
+    .card p {
+      margin-top: 0;
+      margin-bottom: 0.75rem;
+      font-size: 0.95rem;
+    }
+
+    .card a {
+      font-size: 0.95rem;
       text-decoration: none;
     }
-    nav a:hover {
-      text-decoration: underline;
+
+    .inline-link {
+      text-decoration: none;
+      border-bottom: 1px solid #d0d0dd;
     }
-    .section-list ul {
-      margin-top: 0.5rem;
+
+    .inline-link:hover {
+      border-bottom-style: solid;
     }
+
+    .pill {
+      display: inline-block;
+      font-size: 0.8rem;
+      padding: 0.1rem 0.55rem;
+      border-radius: 999px;
+      border: 1px solid #d4d4dd;
+      margin-left: 0.35rem;
+      opacity: 0.8;
+    }
+
     footer {
-      margin-top: 3rem;
+      margin-top: 2.5rem;
       font-size: 0.85rem;
-      opacity: 0.7;
-      border-top: 1px solid #eee;
-      padding-top: 1rem;
+      opacity: 0.75;
+      text-align: center;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        padding: 1.25rem 1rem;
+      }
+      .site-title {
+        font-size: 1.9rem;
+      }
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>Study of Sentences</h1>
-    <p>
-      An exploration of sentences as complete operators acting on invariant structures.
-      This repository collects notes, definitions, operators, and worked examples.
+    <h1 class="site-title">Study of Sentences</h1>
+    <p class="site-subtitle">
+      An exploration of complete sentences as operators acting on invariant structure.
+      This project collects definitions, operators, and worked sentence analyses.
     </p>
     <nav>
       <a href="#overview">Overview</a>
       <a href="#sections">Sections</a>
       <a href="#manuscript">Manuscript</a>
+      <a href="#reading-paths">How to read this</a>
       <a href="#repo">GitHub Repo</a>
     </nav>
   </header>
@@ -66,61 +182,127 @@
   <main>
     <section id="overview">
       <h2>Overview</h2>
+      <p class="section-lead">
+        The core idea of this project is that a fully formed sentence does not just
+        state a fact: it encodes an operator–invariant structure. The materials here
+        are arranged so you can move between the abstract machinery (invariants and
+        operators) and concrete sentence-level studies.
+      </p>
       <p>
-        This project treats every complete sentence as carrying a full operator–invariant
-        structure. The repository is organized into conceptual components:
-        invariants, operators, and concrete sentence studies, plus supporting notes.
+        The repository is organized into a small number of parts:
+        <strong>invariants</strong> for the stable structures, <strong>operators</strong>
+        for the transformations or relations between them, and
+        <strong>sentence studies</strong> where the framework is exercised on
+        real examples.
       </p>
     </section>
 
-    <section id="sections" class="section-list">
-      <h2>Sections in this project</h2>
-      <ul>
-        <li>
-          <strong><a href="invariants/">Invariants</a></strong><br />
-          Definitions and notes on the underlying invariant structures.
+    <section id="sections">
+      <h2>Project sections</h2>
+      <p class="section-lead">
+        These folders correspond directly to the layout of the GitHub repository.
+        Each card links into the underlying files.
+      </p>
+      <ul class="grid">
+        <li class="card">
+          <div>
+            <h3>Invariants<span class="pill">concepts</span></h3>
+            <p>
+              Notes and definitions for the invariant structures that sentences
+              are taken to operate on. This is where the “fixed background” of
+              the system lives.
+            </p>
+          </div>
+          <a href="invariants/">Go to <strong>invariants/</strong> →</a>
         </li>
-        <li>
-          <strong><a href="operators/">Operators</a></strong><br />
-          Operator notions that act on or relate invariants, aligned with sentence structure.
+        <li class="card">
+          <div>
+            <h3>Operators<span class="pill">structure</span></h3>
+            <p>
+              Operator notions that act on or relate invariants, aligned to the
+              grammar and logic of complete sentences.
+            </p>
+          </div>
+          <a href="operators/">Go to <strong>operators/</strong> →</a>
         </li>
-        <li>
-          <strong><a href="sentence-studies/">Sentence Studies</a></strong><br />
-          Concrete analyses of individual sentences as expressions of the operator–invariant system.
+        <li class="card">
+          <div>
+            <h3>Sentence studies<span class="pill">examples</span></h3>
+            <p>
+              Concrete analyses of individual sentences as expressions of the
+              operator–invariant system. This is where the framework meets
+              particular language.
+            </p>
+          </div>
+          <a href="sentence-studies/">Go to <strong>sentence-studies/</strong> →</a>
         </li>
-        <li>
-          <strong><a href="docs/">Docs</a></strong><br />
-          Additional documentation, background material, and supporting notes.
+        <li class="card">
+          <div>
+            <h3>Docs<span class="pill">supporting notes</span></h3>
+            <p>
+              Additional documentation, background material, and side explorations
+              that support the main line of the project.
+            </p>
+          </div>
+          <a href="docs/">Go to <strong>docs/</strong> →</a>
         </li>
       </ul>
     </section>
 
     <section id="manuscript">
       <h2>Main manuscript</h2>
-      <p>
-        A longer, more continuous write-up is available here:
+      <p class="section-lead">
+        The manuscript is a more continuous, narrative treatment of the project.
       </p>
       <p>
-        <a href="manuscript">Read the manuscript</a>
+        You can read the current manuscript directly from the repository:
+        <a class="inline-link" href="manuscript.md">open <code>manuscript.md</code></a>.
       </p>
+    </section>
+
+    <section id="reading-paths">
+      <h2>How to read this project</h2>
+      <p class="section-lead">
+        Depending on your background, you might prefer to start from
+        abstractions, from examples, or from the manuscript.
+      </p>
+      <ul>
+        <li>
+          If you like <strong>formal structure first</strong>, start with
+          <a class="inline-link" href="invariants/">Invariants</a> →
+          <a class="inline-link" href="operators/">Operators</a> →
+          <a class="inline-link" href="sentence-studies/">Sentence studies</a>.
+        </li>
+        <li>
+          If you like <strong>concrete examples first</strong>, begin with
+          <a class="inline-link" href="sentence-studies/">Sentence studies</a>
+          and only then circle back to the invariants and operators.
+        </li>
+        <li>
+          If you prefer a <strong>single narrative</strong>, read the
+          <a class="inline-link" href="manuscript.md">manuscript</a> straight through,
+          and treat the folders as reference material.
+        </li>
+      </ul>
     </section>
 
     <section id="repo">
       <h2>Repository</h2>
-      <p>
-        You can browse all source files and documents directly on GitHub:
+      <p class="section-lead">
+        All materials are stored in a public Git repository.
       </p>
       <p>
-        <a href="https://github.com/TitanicParker/study-of-sentences" target="_blank" rel="noopener noreferrer">
+        Browse the source on GitHub:
+        <a class="inline-link" href="https://github.com/TitanicParker/study-of-sentences" target="_blank" rel="noopener noreferrer">
           github.com/TitanicParker/study-of-sentences
-        </a>
+        </a>.
       </p>
     </section>
   </main>
 
   <footer>
     <p>
-      Study of Sentences &mdash; published via GitHub Pages.
+      Study of Sentences — published via GitHub Pages.
     </p>
   </footer>
 </body>
